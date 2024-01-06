@@ -65,7 +65,7 @@ body {
   font-size: 12px;
 }
 
-.login-box form a {
+.login-box form button {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -79,7 +79,7 @@ body {
   letter-spacing: 4px
 }
 
-.login-box a:hover {
+.login-box button:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -185,10 +185,13 @@ input{
 }
 
 
-/* ---------------------------- */
-.message-close{
-  animation: message-animation-close 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+/* ---> Message Tag */
+/* .message-close{
+  animation: message-animation-close 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
 }
+.message-show{
+  display: block !important;
+} */
 
 #message {
   position: fixed;
@@ -201,11 +204,10 @@ input{
   text-align: center;
   display: none;
   font-family: system-ui;
+  transition: top 2s;
   animation: message-animation 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
 }
-.message-show{
-  display: block !important;
-}
+
 
 @keyframes message-animation {
   from {
@@ -217,14 +219,15 @@ input{
   }
 }
 
-@keyframes message-animation-close {
+/* @keyframes message-animation-close {
   from{
     top: 30px;
   }
   to{
     top: -60px;
+    display: none;
   }
-}
+} */
 
 ::selection{
   color: white;
