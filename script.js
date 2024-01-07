@@ -14,7 +14,6 @@ const normal_link = document.getElementById('normal-link');
 const message = document.getElementById("message");
 
 normal_link.onkeyup = () => {
-    console.log(';alsdjkf');
     message.style.display = 'none'
 }
 
