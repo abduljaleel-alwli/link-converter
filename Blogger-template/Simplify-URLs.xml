@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplify URLs to its normal form</title>
+      <style>
 html {
   height: 100%;
 }
@@ -183,20 +190,14 @@ input{
   background: none;
   border: none;
 }
-
-
-/* ---> Message Tag */
-/* .message-close{
-  animation: message-animation-close 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+#navbar-iframe-container{
+  display: none;
 }
-.message-show{
-  display: block !important;
-} */
 
 #message {
   position: fixed;
   top: -60px;
-  left: 30px;
+  right: 30px;
   font-size: 18px;
   margin-top: 20px;
   opacity: 0;
@@ -219,25 +220,90 @@ input{
   }
 }
 
+
 @media only screen and (max-width: 600px) {
   .login-box{
     width: 95%;
   }
 }
 
-/* @keyframes message-animation-close {
-  from{
-    top: 30px;
-  }
-  to{
-    top: -60px;
-    display: none;
-  }
-} */
-
 ::selection{
   color: white;
   background: #E91E63;
 }
 
-/* ---------- */
+  </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Simplify URLs</h2>
+        <form id="convert-link">
+          <div class="user-box">
+            <input type="url" name="" required="" id="normal-link">
+            <label>Your Link</label>
+          </div>
+          <div class="user-box">
+            <input type="text" name="" required="" id="converted-link">
+            <label>OUTPUT</label>
+          </div>
+          <button id="convert-button">
+            <!-- <a href="" > -->
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Simplify & Copy
+            <!-- </a> -->
+          </button>
+        </form>
+      </div>
+      <p id="message">🤗 تم نسخ الرابط</p>
+    <script>
+  
+
+//Get form element
+var form=document.getElementById("convert-link");
+function submitForm(event){
+   //Preventing page refresh
+   event.preventDefault();
+}
+//Calling a function during form submission.
+form.addEventListener('submit', submitForm);
+
+
+const convert_button = document.getElementById('convert-button');
+const normal_link = document.getElementById('normal-link');
+const message = document.getElementById("message");
+
+normal_link.onkeyup = () => {
+    console.log(';alsdjkf');
+    message.style.display = 'none'
+}
+
+convert_button.addEventListener('click', () => {
+    if (normal_link.value.includes('http')) {
+        const converted_link = document.getElementById('converted-link');
+        const newLink = decodeURIComponent(normal_link.value);
+        converted_link.value = newLink;
+
+        converted_link.select();
+        converted_link.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+
+        message.innerHTML = '🤗 تم نسخ الرابط'
+        message.style.display = 'block'
+        setTimeout(() => {
+            message.style.display = 'none'
+        }, 5000);
+    }else{
+        message.innerHTML = '🙃 خطاء في عنوان الرابط'
+        message.style.display = 'block'
+        setTimeout(() => {
+            message.style.display = 'none'
+        }, 5000);
+    }
+});
+      
+  </script>
+</body>
+</html>
